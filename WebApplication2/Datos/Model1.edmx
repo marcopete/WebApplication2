@@ -1,0 +1,751 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="App1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Equipo">
+          <Key>
+            <PropertyRef Name="IdEquipo" />
+          </Key>
+          <Property Name="IdEquipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEquipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaFundacion" Type="date" />
+          <Property Name="IdLiga" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_Juego">
+          <Key>
+            <PropertyRef Name="IdJuego" />
+          </Key>
+          <Property Name="IdJuego" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdLiga" Type="int" Nullable="false" />
+          <Property Name="IdEquipoLocal" Type="int" Nullable="false" />
+          <Property Name="IdEquipoVisita" Type="int" Nullable="false" />
+          <Property Name="GolesLocal" Type="int" Nullable="false" />
+          <Property Name="GolesVisita" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_Jugador">
+          <Key>
+            <PropertyRef Name="IdJugador" />
+          </Key>
+          <Property Name="IdJugador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreJugador" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdEquipo" Type="int" Nullable="false" />
+          <Property Name="Goles" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_Liga">
+          <Key>
+            <PropertyRef Name="IdLiga" />
+          </Key>
+          <Property Name="IdLiga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreLiga" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdNivelLiga" Type="int" />
+          <Property Name="PremioLiga" Type="bigint" />
+          <Property Name="DescripcionLiga" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFin" Type="date" />
+        </EntityType>
+        <EntityType Name="TBL_NivelLiga">
+          <Key>
+            <PropertyRef Name="IdNivelLiga" />
+          </Key>
+          <Property Name="IdNivelLiga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NivelLiga" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Equipos_TBL_Equipos">
+          <End Role="TBL_Liga" Type="Self.TBL_Liga" Multiplicity="0..1" />
+          <End Role="TBL_Equipo" Type="Self.TBL_Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Liga">
+              <PropertyRef Name="IdLiga" />
+            </Principal>
+            <Dependent Role="TBL_Equipo">
+              <PropertyRef Name="IdLiga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Juego_TBL_EquipoLocal">
+          <End Role="TBL_Equipo" Type="Self.TBL_Equipo" Multiplicity="1" />
+          <End Role="TBL_Juego" Type="Self.TBL_Juego" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Equipo">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="TBL_Juego">
+              <PropertyRef Name="IdEquipoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Juego_TBL_EquipoVisita">
+          <End Role="TBL_Equipo" Type="Self.TBL_Equipo" Multiplicity="1" />
+          <End Role="TBL_Juego" Type="Self.TBL_Juego" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Equipo">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="TBL_Juego">
+              <PropertyRef Name="IdEquipoVisita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Juego_TBL_Liga">
+          <End Role="TBL_Liga" Type="Self.TBL_Liga" Multiplicity="1" />
+          <End Role="TBL_Juego" Type="Self.TBL_Juego" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Liga">
+              <PropertyRef Name="IdLiga" />
+            </Principal>
+            <Dependent Role="TBL_Juego">
+              <PropertyRef Name="IdLiga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Jugador_TBL_Equipo">
+          <End Role="TBL_Equipo" Type="Self.TBL_Equipo" Multiplicity="1" />
+          <End Role="TBL_Jugador" Type="Self.TBL_Jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Equipo">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="TBL_Jugador">
+              <PropertyRef Name="IdEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Liga_TBL_NivelLiga">
+          <End Role="TBL_NivelLiga" Type="Self.TBL_NivelLiga" Multiplicity="0..1" />
+          <End Role="TBL_Liga" Type="Self.TBL_Liga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_NivelLiga">
+              <PropertyRef Name="IdNivelLiga" />
+            </Principal>
+            <Dependent Role="TBL_Liga">
+              <PropertyRef Name="IdNivelLiga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="App1ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Equipo" EntityType="Self.TBL_Equipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Juego" EntityType="Self.TBL_Juego" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Jugador" EntityType="Self.TBL_Jugador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Liga" EntityType="Self.TBL_Liga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_NivelLiga" EntityType="Self.TBL_NivelLiga" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Equipos_TBL_Equipos" Association="Self.FK_TBL_Equipos_TBL_Equipos">
+            <End Role="TBL_Liga" EntitySet="TBL_Liga" />
+            <End Role="TBL_Equipo" EntitySet="TBL_Equipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Juego_TBL_EquipoLocal" Association="Self.FK_TBL_Juego_TBL_EquipoLocal">
+            <End Role="TBL_Equipo" EntitySet="TBL_Equipo" />
+            <End Role="TBL_Juego" EntitySet="TBL_Juego" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Juego_TBL_EquipoVisita" Association="Self.FK_TBL_Juego_TBL_EquipoVisita">
+            <End Role="TBL_Equipo" EntitySet="TBL_Equipo" />
+            <End Role="TBL_Juego" EntitySet="TBL_Juego" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Juego_TBL_Liga" Association="Self.FK_TBL_Juego_TBL_Liga">
+            <End Role="TBL_Liga" EntitySet="TBL_Liga" />
+            <End Role="TBL_Juego" EntitySet="TBL_Juego" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Jugador_TBL_Equipo" Association="Self.FK_TBL_Jugador_TBL_Equipo">
+            <End Role="TBL_Equipo" EntitySet="TBL_Equipo" />
+            <End Role="TBL_Jugador" EntitySet="TBL_Jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Liga_TBL_NivelLiga" Association="Self.FK_TBL_Liga_TBL_NivelLiga">
+            <End Role="TBL_NivelLiga" EntitySet="TBL_NivelLiga" />
+            <End Role="TBL_Liga" EntitySet="TBL_Liga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="App1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBL_Equipo">
+          <Key>
+            <PropertyRef Name="IdEquipo" />
+          </Key>
+          <Property Name="IdEquipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEquipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaFundacion" Type="DateTime" Precision="0" />
+          <Property Name="IdLiga" Type="Int32" />
+          <NavigationProperty Name="TBL_Liga" Relationship="Self.FK_TBL_Equipos_TBL_Equipos" FromRole="TBL_Equipo" ToRole="TBL_Liga" />
+          <NavigationProperty Name="TBL_Jugador" Relationship="Self.FK_TBL_Jugador_TBL_Equipo" FromRole="TBL_Equipo" ToRole="TBL_Jugador" />
+          <NavigationProperty Name="TBL_Juego" Relationship="App1Model.FK_TBL_Juego_TBL_EquipoLocal" FromRole="TBL_Equipo" ToRole="TBL_Juego" />
+          <NavigationProperty Name="TBL_Juego1" Relationship="App1Model.FK_TBL_Juego_TBL_EquipoVisita" FromRole="TBL_Equipo" ToRole="TBL_Juego" />
+        </EntityType>
+        <EntityType Name="TBL_Jugador">
+          <Key>
+            <PropertyRef Name="IdJugador" />
+          </Key>
+          <Property Name="IdJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreJugador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdEquipo" Type="Int32" Nullable="false" />
+          <Property Name="Goles" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_Equipo" Relationship="Self.FK_TBL_Jugador_TBL_Equipo" FromRole="TBL_Jugador" ToRole="TBL_Equipo" />
+        </EntityType>
+        <EntityType Name="TBL_Liga">
+          <Key>
+            <PropertyRef Name="IdLiga" />
+          </Key>
+          <Property Name="IdLiga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreLiga" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdNivelLiga" Type="Int32" />
+          <Property Name="PremioLiga" Type="Int64" />
+          <Property Name="DescripcionLiga" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TBL_Equipo" Relationship="Self.FK_TBL_Equipos_TBL_Equipos" FromRole="TBL_Liga" ToRole="TBL_Equipo" />
+          <NavigationProperty Name="TBL_NivelLiga" Relationship="Self.FK_TBL_Liga_TBL_NivelLiga" FromRole="TBL_Liga" ToRole="TBL_NivelLiga" />
+          <NavigationProperty Name="TBL_Juego" Relationship="App1Model.FK_TBL_Juego_TBL_Liga" FromRole="TBL_Liga" ToRole="TBL_Juego" />
+        </EntityType>
+        <EntityType Name="TBL_NivelLiga">
+          <Key>
+            <PropertyRef Name="IdNivelLiga" />
+          </Key>
+          <Property Name="IdNivelLiga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NivelLiga" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_Liga" Relationship="Self.FK_TBL_Liga_TBL_NivelLiga" FromRole="TBL_NivelLiga" ToRole="TBL_Liga" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Equipos_TBL_Equipos">
+          <End Role="TBL_Liga" Type="Self.TBL_Liga" Multiplicity="0..1" />
+          <End Role="TBL_Equipo" Type="Self.TBL_Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Liga">
+              <PropertyRef Name="IdLiga" />
+            </Principal>
+            <Dependent Role="TBL_Equipo">
+              <PropertyRef Name="IdLiga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Jugador_TBL_Equipo">
+          <End Role="TBL_Equipo" Type="Self.TBL_Equipo" Multiplicity="1" />
+          <End Role="TBL_Jugador" Type="Self.TBL_Jugador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Equipo">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="TBL_Jugador">
+              <PropertyRef Name="IdEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Liga_TBL_NivelLiga">
+          <End Role="TBL_NivelLiga" Type="Self.TBL_NivelLiga" Multiplicity="0..1" />
+          <End Role="TBL_Liga" Type="Self.TBL_Liga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_NivelLiga">
+              <PropertyRef Name="IdNivelLiga" />
+            </Principal>
+            <Dependent Role="TBL_Liga">
+              <PropertyRef Name="IdNivelLiga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="App1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TBL_Equipo" EntityType="Self.TBL_Equipo" />
+          <EntitySet Name="TBL_Jugador" EntityType="Self.TBL_Jugador" />
+          <EntitySet Name="TBL_Liga" EntityType="Self.TBL_Liga" />
+          <EntitySet Name="TBL_NivelLiga" EntityType="Self.TBL_NivelLiga" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Equipos_TBL_Equipos" Association="Self.FK_TBL_Equipos_TBL_Equipos">
+            <End Role="TBL_Liga" EntitySet="TBL_Liga" />
+            <End Role="TBL_Equipo" EntitySet="TBL_Equipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Jugador_TBL_Equipo" Association="Self.FK_TBL_Jugador_TBL_Equipo">
+            <End Role="TBL_Equipo" EntitySet="TBL_Equipo" />
+            <End Role="TBL_Jugador" EntitySet="TBL_Jugador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Liga_TBL_NivelLiga" Association="Self.FK_TBL_Liga_TBL_NivelLiga">
+            <End Role="TBL_NivelLiga" EntitySet="TBL_NivelLiga" />
+            <End Role="TBL_Liga" EntitySet="TBL_Liga" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="TBL_Juego" EntityType="App1Model.TBL_Juego" />
+          <AssociationSet Name="FK_TBL_Juego_TBL_EquipoLocal" Association="App1Model.FK_TBL_Juego_TBL_EquipoLocal">
+            <End Role="TBL_Equipo" EntitySet="TBL_Equipo" />
+            <End Role="TBL_Juego" EntitySet="TBL_Juego" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Juego_TBL_EquipoVisita" Association="App1Model.FK_TBL_Juego_TBL_EquipoVisita">
+            <End Role="TBL_Equipo" EntitySet="TBL_Equipo" />
+            <End Role="TBL_Juego" EntitySet="TBL_Juego" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_Juego_TBL_Liga" Association="App1Model.FK_TBL_Juego_TBL_Liga">
+            <End Role="TBL_Liga" EntitySet="TBL_Liga" />
+            <End Role="TBL_Juego" EntitySet="TBL_Juego" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TBL_Juego">
+          <Key>
+            <PropertyRef Name="IdJuego" />
+          </Key>
+          <Property Name="IdJuego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLiga" Type="Int32" Nullable="false" />
+          <Property Name="IdEquipoLocal" Type="Int32" Nullable="false" />
+          <Property Name="IdEquipoVisita" Type="Int32" Nullable="false" />
+          <Property Name="GolesLocal" Type="Int32" Nullable="false" />
+          <Property Name="GolesVisita" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_Equipo" Relationship="App1Model.FK_TBL_Juego_TBL_EquipoLocal" FromRole="TBL_Juego" ToRole="TBL_Equipo" />
+          <NavigationProperty Name="TBL_Equipo1" Relationship="App1Model.FK_TBL_Juego_TBL_EquipoVisita" FromRole="TBL_Juego" ToRole="TBL_Equipo" />
+          <NavigationProperty Name="TBL_Liga" Relationship="App1Model.FK_TBL_Juego_TBL_Liga" FromRole="TBL_Juego" ToRole="TBL_Liga" />
+        </EntityType>
+        <Association Name="FK_TBL_Juego_TBL_EquipoLocal">
+          <End Type="App1Model.TBL_Equipo" Role="TBL_Equipo" Multiplicity="1" />
+          <End Type="App1Model.TBL_Juego" Role="TBL_Juego" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Equipo">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="TBL_Juego">
+              <PropertyRef Name="IdEquipoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Juego_TBL_EquipoVisita">
+          <End Type="App1Model.TBL_Equipo" Role="TBL_Equipo" Multiplicity="1" />
+          <End Type="App1Model.TBL_Juego" Role="TBL_Juego" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Equipo">
+              <PropertyRef Name="IdEquipo" />
+            </Principal>
+            <Dependent Role="TBL_Juego">
+              <PropertyRef Name="IdEquipoVisita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_Juego_TBL_Liga">
+          <End Type="App1Model.TBL_Liga" Role="TBL_Liga" Multiplicity="1" />
+          <End Type="App1Model.TBL_Juego" Role="TBL_Juego" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Liga">
+              <PropertyRef Name="IdLiga" />
+            </Principal>
+            <Dependent Role="TBL_Juego">
+              <PropertyRef Name="IdLiga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="App1ModelStoreContainer" CdmEntityContainer="App1Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="App1Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="App1Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="App1Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="App1Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="App1Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="App1Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Equipo">
+            <EntityTypeMapping TypeName="App1Model.TBL_Equipo">
+              <MappingFragment StoreEntitySet="TBL_Equipo">
+                <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+                <ScalarProperty Name="NombreEquipo" ColumnName="NombreEquipo" />
+                <ScalarProperty Name="FechaFundacion" ColumnName="FechaFundacion" />
+                <ScalarProperty Name="IdLiga" ColumnName="IdLiga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Jugador">
+            <EntityTypeMapping TypeName="App1Model.TBL_Jugador">
+              <MappingFragment StoreEntitySet="TBL_Jugador">
+                <ScalarProperty Name="IdJugador" ColumnName="IdJugador" />
+                <ScalarProperty Name="NombreJugador" ColumnName="NombreJugador" />
+                <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+                <ScalarProperty Name="Goles" ColumnName="Goles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Liga">
+            <EntityTypeMapping TypeName="App1Model.TBL_Liga">
+              <MappingFragment StoreEntitySet="TBL_Liga">
+                <ScalarProperty Name="IdLiga" ColumnName="IdLiga" />
+                <ScalarProperty Name="NombreLiga" ColumnName="NombreLiga" />
+                <ScalarProperty Name="IdNivelLiga" ColumnName="IdNivelLiga" />
+                <ScalarProperty Name="PremioLiga" ColumnName="PremioLiga" />
+                <ScalarProperty Name="DescripcionLiga" ColumnName="DescripcionLiga" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_NivelLiga">
+            <EntityTypeMapping TypeName="App1Model.TBL_NivelLiga">
+              <MappingFragment StoreEntitySet="TBL_NivelLiga">
+                <ScalarProperty Name="IdNivelLiga" ColumnName="IdNivelLiga" />
+                <ScalarProperty Name="NivelLiga" ColumnName="NivelLiga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="App1Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="TBL_Juego">
+            <EntityTypeMapping TypeName="App1Model.TBL_Juego">
+              <MappingFragment StoreEntitySet="TBL_Juego">
+                <ScalarProperty Name="GolesVisita" ColumnName="GolesVisita" />
+                <ScalarProperty Name="GolesLocal" ColumnName="GolesLocal" />
+                <ScalarProperty Name="IdEquipoVisita" ColumnName="IdEquipoVisita" />
+                <ScalarProperty Name="IdEquipoLocal" ColumnName="IdEquipoLocal" />
+                <ScalarProperty Name="IdLiga" ColumnName="IdLiga" />
+                <ScalarProperty Name="IdJuego" ColumnName="IdJuego" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

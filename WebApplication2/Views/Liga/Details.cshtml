@@ -1,0 +1,66 @@
+﻿@model WebApplication2.Datos.TBL_Liga
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_Liga</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreLiga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreLiga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PremioLiga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PremioLiga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionLiga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionLiga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_NivelLiga.NivelLiga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_NivelLiga.NivelLiga)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdLiga }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

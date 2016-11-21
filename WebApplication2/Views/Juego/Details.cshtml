@@ -1,0 +1,58 @@
+﻿@model WebApplication2.Datos.TBL_Juego
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBL_Juego</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GolesLocal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GolesLocal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GolesVisita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GolesVisita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_Equipo.NombreEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_Equipo.NombreEquipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_Equipo1.NombreEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_Equipo1.NombreEquipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_Liga.NombreLiga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_Liga.NombreLiga)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdJuego }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

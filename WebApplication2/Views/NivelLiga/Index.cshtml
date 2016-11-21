@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplication2.Datos.TBL_NivelLiga>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NivelLiga)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NivelLiga)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdNivelLiga }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdNivelLiga }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdNivelLiga })
+        </td>
+    </tr>
+}
+
+</table>
